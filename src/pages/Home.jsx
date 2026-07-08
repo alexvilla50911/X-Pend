@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { motion } from 'framer-motion'
 import { db } from '../lib/db'
+import { addIncome, deleteIncome } from '../lib/actions'
 import { expandExpenseByMonth, formatCurrency, formatDateShort, monthKey, monthLabel, todayISO } from '../lib/dates'
 import Sheet from '../components/Sheet.jsx'
 
@@ -29,12 +30,16 @@ export default function Home() {
     .flatMap((e) => expandExpenseByMonth(e))
     .filter((c) => c.key === thisMonth)
     .reduce((sum, c) => sum + c.amount, 0)
+  const monthCashExpense = cashExpenses
+    .filter((e) => monthKey(e.date) === thisMonth)
+    .reduce((sum, e) => sum + e.amount, 0)
+  const monthSaldo = monthIncome - monthCashExpense
 
   async function handleSubmit(e) {
     e.preventDefault()
     const value = parseFloat(amount)
     if (!value || value <= 0) return
-    await db.incomes.add({ amount: value, note: note.trim(), date })
+    await addIncome({ amount: value, note: note.trim(), date })
     setAmount('')
     setNote('')
     setDate(todayISO())
@@ -42,7 +47,7 @@ export default function Home() {
   }
 
   async function handleDelete(id) {
-    await db.incomes.delete(id)
+    await deleteIncome(id)
   }
 
   return (
@@ -54,12 +59,15 @@ export default function Home() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <p className="balance-label">Saldo disponible</p>
-        <p className="balance-amount">{formatCurrency(saldo)}</p>
+        <p className="balance-label">Saldo de {monthLabel(thisMonth)}</p>
+        <p className="balance-amount">{formatCurrency(monthSaldo)}</p>
         <button className="btn btn-primary btn-block" style={{ marginTop: 16 }} onClick={() => setSheetOpen(true)}>
           + Agregar dinero
         </button>
       </motion.div>
+      <p className="empty-state" style={{ textAlign: 'left', padding: '8px 2px' }}>
+        Acumulado de siempre: {formatCurrency(saldo)}
+      </p>
 
       <div className="stat-row">
         <div className="stat">

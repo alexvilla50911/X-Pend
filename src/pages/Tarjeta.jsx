@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { motion, AnimatePresence } from 'framer-motion'
 import { db, CARD, CATEGORIES, MSI_OPTIONS } from '../lib/db'
+import { addExpense, deleteExpense } from '../lib/actions'
 import {
   cardCycleForISO,
   currentCardCycle,
@@ -69,14 +70,14 @@ export default function Tarjeta() {
   const closedTotal = closedCargos + msiTotal
 
   async function handleDelete(id) {
-    await db.expenses.delete(id)
+    await deleteExpense(id)
   }
 
   async function handleAddCargo(e) {
     e.preventDefault()
     const value = parseFloat(cargoAmount)
     if (!value || value <= 0) return
-    await db.expenses.add({
+    await addExpense({
       amount: value,
       category: cargoCategory,
       method: 'tarjeta',
@@ -98,7 +99,7 @@ export default function Tarjeta() {
     if (!value || value <= 0) return
     if (paid < 0 || paid >= msiMonths) return
     const purchaseIdx = closedIdx - paid
-    await db.expenses.add({
+    await addExpense({
       amount: value,
       category,
       method: 'tarjeta',

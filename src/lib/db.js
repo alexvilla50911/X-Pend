@@ -26,3 +26,26 @@ db.version(1).stores({
   incomes: '++id, date',
   expenses: '++id, date, category, method',
 })
+
+db.version(2)
+  .stores({
+    incomes: '++id, date, uuid',
+    expenses: '++id, date, category, method, uuid',
+    pendingDeletes: '++id, uuid, table',
+  })
+  .upgrade(async (tx) => {
+    await tx
+      .table('incomes')
+      .toCollection()
+      .modify((rec) => {
+        if (!rec.uuid) rec.uuid = crypto.randomUUID()
+        if (rec.synced === undefined) rec.synced = false
+      })
+    await tx
+      .table('expenses')
+      .toCollection()
+      .modify((rec) => {
+        if (!rec.uuid) rec.uuid = crypto.randomUUID()
+        if (rec.synced === undefined) rec.synced = false
+      })
+  })

@@ -4,6 +4,7 @@ import Home from './pages/Home.jsx'
 import Gastos from './pages/Gastos.jsx'
 import Tarjeta from './pages/Tarjeta.jsx'
 import Graficas from './pages/Graficas.jsx'
+import Cuenta from './pages/Cuenta.jsx'
 import './App.css'
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
             <Route path="/gastos" element={<Gastos />} />
             <Route path="/tarjeta" element={<Tarjeta />} />
             <Route path="/graficas" element={<Graficas />} />
+            <Route path="/cuenta" element={<Cuenta />} />
           </Routes>
         </div>
         <BottomNav />

@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { seedInitialMsi } from './lib/seed.js'
+import './lib/sync.js'
 
 seedInitialMsi()
 

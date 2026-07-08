@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { motion, AnimatePresence } from 'framer-motion'
 import { db, CARD, CATEGORIES, METHODS, MSI_OPTIONS, methodLabel } from '../lib/db'
+import { addExpense, deleteExpense } from '../lib/actions'
 import { formatCurrency, formatDateShort, msiInstallmentInfo, todayISO } from '../lib/dates'
 import Sheet from '../components/Sheet.jsx'
 
@@ -30,7 +31,7 @@ export default function Gastos() {
     e.preventDefault()
     const value = parseFloat(amount)
     if (!value || value <= 0) return
-    await db.expenses.add({
+    await addExpense({
       amount: value,
       category,
       method,
@@ -48,7 +49,7 @@ export default function Gastos() {
   }
 
   async function handleDelete(id) {
-    await db.expenses.delete(id)
+    await deleteExpense(id)
   }
 
   return (

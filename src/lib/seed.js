@@ -39,6 +39,8 @@ export async function fixSeededMsiAnchor() {
       msiMonths: item.msiMonths,
       note: item.note,
       date: isoFromCycleIndex(closedIdx - item.paid, CARD.cutDay),
+      uuid: crypto.randomUUID(),
+      synced: false,
     })),
   )
 }
@@ -65,6 +67,8 @@ export async function seedInitialMsi() {
       msiMonths: item.msiMonths,
       note: item.note,
       date: isoFromCycleIndex(closedIdx - item.paid, CARD.cutDay),
+      uuid: crypto.randomUUID(),
+      synced: false,
     })),
   )
 }

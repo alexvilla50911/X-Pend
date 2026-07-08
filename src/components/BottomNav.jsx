@@ -32,6 +32,16 @@ const items = [
       <path d="M4 20V10M11 20V4M18 20v-7" strokeWidth="1.8" strokeLinecap="round" fill="none" />
     ),
   },
+  {
+    to: '/cuenta',
+    label: 'Cuenta',
+    icon: (
+      <>
+        <circle cx="12" cy="8" r="3.5" strokeWidth="1.8" fill="none" />
+        <path d="M4.5 20c1.5-4 4.5-6 7.5-6s6 2 7.5 6" strokeWidth="1.8" strokeLinecap="round" fill="none" />
+      </>
+    ),
+  },
 ]
 
 export default function BottomNav() {
