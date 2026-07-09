@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="640" viewBox="0 0 320 640" font-family="-apple-system, Helvetica, Arial, sans-serif">
+  <rect width="320" height="640" rx="36" fill="#0b1120"/>
+  <rect x="0" y="0" width="320" height="640" rx="36" fill="none" stroke="#253150" stroke-width="2"/>
+
+  <text x="20" y="46" fill="#f1f5f9" font-size="22" font-weight="700">X-Pend</text>
+
+  <!-- balance card -->
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#064e3b"/>
+    </linearGradient>
+  </defs>
+  <rect x="18" y="62" width="284" height="128" rx="20" fill="url(#g1)"/>
+  <text x="36" y="94" fill="#d1fae5" font-size="12">Saldo de julio</text>
+  <text x="36" y="128" fill="#ffffff" font-size="30" font-weight="800">$3,240.00</text>
+  <rect x="36" y="146" width="248" height="30" rx="10" fill="#052e21"/>
+  <text x="160" y="166" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">+ Agregar dinero</text>
+
+  <text x="20" y="206" fill="#64748a" font-size="11">Acumulado de siempre: $18,650.00</text>
+
+  <!-- stat row -->
+  <rect x="18" y="220" width="136" height="64" rx="14" fill="#131b2e" stroke="#253150"/>
+  <text x="30" y="242" fill="#94a3b8" font-size="10">Entró este mes</text>
+  <text x="30" y="266" fill="#34d399" font-size="16" font-weight="700">$8,000.00</text>
+
+  <rect x="166" y="220" width="136" height="64" rx="14" fill="#131b2e" stroke="#253150"/>
+  <text x="178" y="242" fill="#94a3b8" font-size="10">Gastaste este mes</text>
+  <text x="178" y="266" fill="#f87171" font-size="16" font-weight="700">$4,760.00</text>
+
+  <text x="20" y="308" fill="#64748a" font-size="10">Julio 2026 · mes calendario, todos los métodos</text>
+
+  <text x="20" y="342" fill="#94a3b8" font-size="11" font-weight="700" letter-spacing="0.5">INGRESOS RECIENTES</text>
+
+  <rect x="18" y="356" width="284" height="54" rx="14" fill="#131b2e" stroke="#253150"/>
+  <text x="34" y="378" fill="#f1f5f9" font-size="13" font-weight="600">Quincena</text>
+  <text x="34" y="396" fill="#64748a" font-size="11">15 jul</text>
+  <text x="286" y="388" fill="#34d399" font-size="14" font-weight="700" text-anchor="end">+$4,000.00</text>
+
+  <rect x="18" y="418" width="284" height="54" rx="14" fill="#131b2e" stroke="#253150"/>
+  <text x="34" y="440" fill="#f1f5f9" font-size="13" font-weight="600">Extra</text>
+  <text x="34" y="458" fill="#64748a" font-size="11">3 jul</text>
+  <text x="286" y="450" fill="#34d399" font-size="14" font-weight="700" text-anchor="end">+$1,200.00</text>
+
+  <!-- bottom nav -->
+  <rect x="0" y="576" width="320" height="64" fill="#131b2e"/>
+  <line x1="0" y1="576" x2="320" y2="576" stroke="#253150"/>
+  <g font-size="9" fill="#64748a" text-anchor="middle">
+    <text x="42" y="612" fill="#10b981" font-weight="700">Inicio</text>
+    <text x="110" y="612">Gastos</text>
+    <text x="178" y="612">Tarjeta</text>
+    <text x="246" y="612">Gráficas</text>
+    <text x="290" y="612">Cuenta</text>
+  </g>
+</svg>
